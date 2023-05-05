@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myCanvas {
+            border: #000 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <canvas id="myCanvas" width="600" height="500" style="border: #000 1px solid;"></canvas>
+    <button type="button">Reset</button>
+    </div>
+
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const context = canvas.getContext('2d');
+        const radius = 40;
+
+        context.beginPath();
+        context.arc(100, 100, radius, 0, 2 * Math.PI, false);
+        context.fillStyle = 'green';
+        context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = '#003300';
+        context.stroke();
+
+        context.beginPath();
+        context.arc(100, 200, radius, 0, 2 * Math.PI, false);
+        context.fillStyle = 'yellow';
+        context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = '#003300';
+        context.stroke();
+
+        context.beginPath();
+        context.arc(100, 300, radius, 0, 2 * Math.PI, false);
+        context.fillStyle = 'blue';
+        context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = '#003300';
+        context.stroke();
+
+        context.beginPath();
+        context.arc(100, 400, radius, 0, 2 * Math.PI, false);
+        context.fillStyle = 'gray';
+        context.fill();
+        context.lineWidth = 2;
+        context.strokeStyle = '#003300';
+        context.stroke();
+
+        context.beginPath();
+        canvas_arrow(context, 500, 100, 400, 100);
+        canvas_arrow(context, 500, 200, 400, 200);
+        canvas_arrow(context, 500, 300, 400, 300);
+        canvas_arrow(context, 500, 400, 400, 400);
+        context.stroke();
+
+        function canvas_arrow(context, fromx, fromy, tox, toy) {
+        var headlen = 10; // length of head in pixels
+        var dx = tox - fromx;
+        var dy = toy - fromy;
+        var angle = Math.atan2(dy, dx);
+        context.moveTo(fromx, fromy);
+        context.lineTo(tox, toy);
+        context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+        context.moveTo(tox, toy);
+        context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+        }
+    </script>
+</body>
+</html>
